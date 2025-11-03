@@ -141,6 +141,19 @@ class IPCacheManager:
             finally:
                 conn.close()
 
+    def clear_all(self) -> int:
+        """清空所有缓存记录，返回删除的条目数。"""
+        with self._db_lock:
+            conn = sqlite3.connect(self.db_path)
+            try:
+                cursor = conn.execute("SELECT COUNT(*) FROM ip_cache")
+                count = cursor.fetchone()[0]
+                conn.execute("DELETE FROM ip_cache")
+                conn.commit()
+            finally:
+                conn.close()
+        return count
+
     def get_or_query(
         self,
         ip: str,

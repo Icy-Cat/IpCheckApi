@@ -81,9 +81,9 @@ class IPQueryService:
 
                 over_all_data = response.json()["ret_data"]["data"]
 
-                # ip_base_response = client.get(f"{self.ip_base_baseurl}/{ip_address}")
-                # ip_base_response.raise_for_status()
-                # over_base_data = ip_base_response.json()["ret_data"]["data"]
+                ip_base_response = client.get(f"{self.ip_base_baseurl}/{ip_address}")
+                ip_base_response.raise_for_status()
+                over_base_data = ip_base_response.json()["ret_data"]["data"]
 
                 # 解析响应内容
                 result = {
@@ -91,7 +91,7 @@ class IPQueryService:
                     "status": "success",
                     "data": {
                         "overall": over_all_data,
-                        # "ip_base": over_base_data,
+                        "ip_base": over_base_data,
                     },
                 }
 
