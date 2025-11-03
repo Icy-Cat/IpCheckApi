@@ -1,0 +1,6 @@
+DrissionPage
+Flask
+httpx
+fake-useragent
+flask-restx
+python-dotenv
