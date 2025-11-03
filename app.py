@@ -45,6 +45,7 @@ ip_model = api.model(
     {
         "ip": fields.String(required=True, description="查询的IP地址"),
         "status": fields.String(description="查询状态", example="success"),
+        "cached_at": fields.String(description="缓存写入时间（UTC+8 ISO8601）"),
         "data": fields.Raw(description="查询结果数据"),
     },
 )
